@@ -3,10 +3,7 @@
 Dog::Dog( void ) : Animal( "Dog" ) {
 	std::cout << "Dog [ Defalut ] Constructor Called " << std::endl;
 }
-Dog::Dog( std::string name ) : Animal( name ) {
-	std::cout << "Dog [ String ] Constructor Called " << std::endl;
-	this->setType( "Dog" );
-}
+
 Dog::Dog( const Dog& ref ) {
 	std::cout << "Dog [ Copy ] Constructor Called " << std::endl;
 	*this = ref;
