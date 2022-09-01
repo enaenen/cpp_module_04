@@ -5,7 +5,6 @@
 class Dog : public Animal {
    public:
 	Dog( void );
-	Dog( std::string name );
 	Dog( const Dog& ref );
 	virtual ~Dog( void );
 
