@@ -8,7 +8,7 @@ Brain::Brain( const Brain& ref ) {
 	*this = ref;
 }
 Brain& Brain::operator=( const Brain& ref ) {
-	std::cout << "Brain copy assignment Called " << std::endl;
+	std::cout << "Brain [ Copy Assignment ] Called " << std::endl;
 	if ( this != &ref ) {
 		for ( int i = 0; i < MAX; i++ ) {
 			ideas[i] = ref.ideas[i];

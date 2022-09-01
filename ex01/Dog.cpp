@@ -5,12 +5,15 @@ Dog::Dog( void ) : Animal( "Dog" ) {
 }
 
 Dog::Dog( const Dog& ref ) {
-	std::cout << "Dog [ Copy ] Constructor Called " << std::endl;
+	std::cout << "Dog [ Copy Constructor ] Called " << std::endl;
 	*this = ref;
 }
-Dog::~Dog( void ) { std::cout << "Dog [ Destructor ]  Called " << std::endl; }
+Dog::~Dog( void ) {
+	std::cout << "Dog [ Destructor ]  Called " << std::endl;
+	delete brain;
+}
 Dog& Dog::operator=( const Dog& ref ) {
-	std::cout << "Dog Copy Operator Called " << std::endl;
+	std::cout << "Dog [ Copy Assignment ]Called " << std::endl;
 	if ( this != &ref ) {
 		type = ref.type;
 	}
