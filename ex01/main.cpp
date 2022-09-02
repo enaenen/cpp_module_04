@@ -4,39 +4,26 @@
 
 int main() {
 	{
-		std::cout << "==============MANDATORY TEST=============" << std::endl
-				  << std::endl;
-		const Animal* meta = new Animal();
-		const Animal* i = new Dog();
-		const Animal* j = new Cat();
-
-		std::cout << i->getType() << " " << std::endl;
-		std::cout << j->getType() << " " << std::endl;
-		i->makeSound();  // will output the cat sound!
-		j->makeSound();
-		meta->makeSound();
-
-		delete meta;
-		delete i;
-		delete j;
-
-		std::cout << std::endl;
+		Animal *a1 = new Dog();
+		Animal *a2 = new Dog( *a1 );
+		delete a1;
+		delete a2;
 	}
 
 	{
-		std::cout << "==============WRONG ANIMAL TEST=============" << std::endl
-				  << std::endl;
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* j = new WrongCat();
+		std::cout << "==============MANDATORY TEST=============" << std::endl;
+		Animal *animalArray[10];
+		for ( int i = 0; i < 5; i++ ) {
+			animalArray[i] = new Cat();
+		}
+		for ( int i = 5; i < 10; i++ ) {
+			animalArray[i] = new Dog();
+		}
 
-		std::cout << j->getType() << " " << std::endl;
-		j->makeSound();
-		meta->makeSound();
-
-		delete meta;
-		delete j;
-
-		std::cout << std::endl;
+		for ( int i = 0; i < 10; i++ ) {
+			delete animalArray[i];
+		}
+		system( "leaks ex01" );
 	}
 	return 0;
 }
