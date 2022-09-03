@@ -1,4 +1,4 @@
-TARGET = ex03
+TARGET = ex02
 
 SRCS = main.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp AAnimal.cpp
 

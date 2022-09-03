@@ -36,18 +36,18 @@ void Cat::makeSound( void ) const {
 
 Brain* Cat::getBrain( void ) const { return brain; }
 
-void Cat::setBrain( const std::string idea, unsigned int index ) const {
-	brain->setIdeas( idea, index );
+void Cat::setBrain( unsigned int index, const std::string idea ) const {
+	brain->setIdeas( index, idea );
 }
 
-// void Cat::setBrain( const char* idea, unsigned int index ) const {
-// 	std::string tmp = idea;
-// 	brain->setIdeas( tmp, index );
-// }
+void Cat::setBrain( unsigned int index, const char* idea ) const {
+	std::string idea_str( idea );
+	brain->setIdeas( index, idea_str );
+}
 
 void Cat::printBrainIdeas( void ) const {
 	int i( 0 );
-	while ( *( brain->getIdeas( i ).c_str() ) ) {
+	while ( !brain->getIdeas( i ).empty() ) {
 		std::cout << brain->getIdeas( i ) << std::endl;
 		i++;
 	}

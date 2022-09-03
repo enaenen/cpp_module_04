@@ -1,12 +1,12 @@
 #pragma once
 
-#define MAX 100
+#define CAPACITY 100
 
 #include <iostream>
 
 class Brain {
    private:
-	std::string ideas[MAX];
+	std::string ideas[CAPACITY];
 
    public:
 	Brain( void );
@@ -15,5 +15,5 @@ class Brain {
 	~Brain( void );
 
 	std::string getIdeas( unsigned int index ) const;
-	void setIdeas( const std::string idea, unsigned int index );
+	void setIdeas( unsigned int index, const std::string idea );
 };

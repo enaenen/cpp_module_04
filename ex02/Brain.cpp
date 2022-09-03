@@ -10,7 +10,7 @@ Brain::Brain( const Brain& ref ) {
 Brain& Brain::operator=( const Brain& ref ) {
 	std::cout << "Brain [ Copy Assignment ] Called " << std::endl;
 	if ( this != &ref ) {
-		for ( int i = 0; i < MAX; i++ ) {
+		for ( int i = 0; i < CAPACITY; i++ ) {
 			ideas[i] = ref.ideas[i];
 		}
 	}
@@ -21,11 +21,12 @@ Brain::~Brain( void ) {
 }
 
 std::string Brain::getIdeas( unsigned int index ) const {
-	if ( MAX <= index )
+	if ( CAPACITY <= index )
 		return std::string();
 	return ideas[index];
 }
-void Brain::setIdeas( const std::string idea, unsigned int index ) {
-	if ( MAX <= index )
+
+void Brain::setIdeas( unsigned int index, const std::string idea ) {
+	if ( index < CAPACITY )
 		ideas[index] = idea;
 }
