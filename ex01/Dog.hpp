@@ -10,8 +10,12 @@ class Dog : public Animal {
    public:
 	Dog( void );
 	Dog( const Dog& ref );
+	Dog& operator=( const Dog& ref );
 	virtual ~Dog( void );
 
-	Dog& operator=( const Dog& ref );
 	virtual void makeSound( void ) const;
+	Brain* getBrain( void ) const;
+	void setBrain( unsigned int index, const std::string content );
+	void setBrain( unsigned int index, const char* content );
+	void printBrainIdeas( void ) const;
 };

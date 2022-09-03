@@ -4,15 +4,54 @@
 
 int main() {
 	{
-		Animal *a1 = new Dog();
-		Animal *a2 = new Dog( *a1 );
-		delete a1;
-		delete a2;
+		const Animal* animal = new Dog();
+		const Animal* dog = new Dog();
+		const Animal* cat = new Cat();
+
+		animal->makeSound();
+		dog->makeSound();
+		cat->makeSound();
+		delete animal;  // should not create a leak
+
+		delete dog;
+		delete cat;
+	}
+
+	// Animal ArrayTEST
+	{
+		Animal* animalArray[10];
+
+		for ( int i = 0; i < 10; i++ ) {
+			if ( i % 2 == 0 )
+				animalArray[i] = new Dog();
+			else
+				animalArray[i] = new Cat();
+		}
+
+		for ( int i = 0; i < 10; i++ ) delete animalArray[i];
 	}
 
 	{
-		std::cout << "==============MANDATORY TEST=============" << std::endl;
-		Animal *animalArray[10];
+		std::cout << "==============BRAIN TEST================" << std::endl;
+		Dog dog = Dog();
+		dog.setBrain( 0, "DOGGY DOGGY" );
+		dog.setBrain( 1, "I WANT BONES" );
+		Dog dog2 = Dog( dog );
+		std::cout << "==============DOG 1 BRAIN================" << std::endl;
+		dog.printBrainIdeas();
+		std::cout << "==============DOG 2 BRAIN================" << std::endl;
+		dog2.printBrainIdeas();
+		std::cout << "==============DOG 2 BRAIN CHANGE=========" << std::endl;
+		dog2.setBrain( 0, "NONONO" );
+		dog2.setBrain( 1, "YESYESYES" );
+		dog2.printBrainIdeas();
+		std::cout << "==============DOG 1 BRAIN================" << std::endl;
+		dog.printBrainIdeas();
+	}
+
+	{
+		std::cout << "==============DOUBLE FREE TEST=============" << std::endl;
+		Animal* animalArray[10];
 		for ( int i = 0; i < 5; i++ ) {
 			animalArray[i] = new Cat();
 		}
@@ -23,7 +62,8 @@ int main() {
 		for ( int i = 0; i < 10; i++ ) {
 			delete animalArray[i];
 		}
-		system( "leaks ex01" );
 	}
+	system( "leaks ex01" );
+
 	return 0;
 }
