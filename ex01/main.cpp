@@ -17,8 +17,9 @@ int main() {
 		delete cat;
 	}
 
-	// Animal ArrayTEST
 	{
+		std::cout << "==============Animal ARRAY TEST=============="
+				  << std::endl;
 		Animal* animalArray[10];
 
 		for ( int i = 0; i < 10; i++ ) {
@@ -45,8 +46,11 @@ int main() {
 		dog2.setBrain( 0, "NONONO" );
 		dog2.setBrain( 1, "YESYESYES" );
 		dog2.printBrainIdeas();
-		std::cout << "==============DOG 1 BRAIN================" << std::endl;
+		std::cout << "==============DOG 1 BRAIN AFTER CHANGE================"
+				  << std::endl;
 		dog.printBrainIdeas();
+		std::cout << "==============DOG 2 BRAIN AFTER CHANGE================"
+				  << std::endl;
 	}
 
 	{
@@ -63,7 +67,7 @@ int main() {
 			delete animalArray[i];
 		}
 	}
-	system( "leaks ex01" );
+	// system( "leaks ex01" );
 
 	return 0;
 }

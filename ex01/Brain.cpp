@@ -1,10 +1,10 @@
 #include "Brain.hpp"
 
 Brain::Brain( void ) {
-	std::cout << "Brain [ Default ] constructor." << std::endl;
+	std::cout << "Brain [ Default ] Constructor Called" << std::endl;
 }
 Brain::Brain( const Brain& ref ) {
-	std::cout << "Brain [ Copy ] constructor." << std::endl;
+	std::cout << "Brain [ Copy ] Constructor Called" << std::endl;
 	*this = ref;
 }
 Brain& Brain::operator=( const Brain& ref ) {
