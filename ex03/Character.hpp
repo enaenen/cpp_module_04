@@ -2,12 +2,13 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
-#include "Materia.hpp"
+
+#define BAG_SLOT_MAX 4
 
 class Character : public ICharacter {
    private:
 	std::string name;
-	AMateria* materia;
+	AMateria* materia[BAG_SLOT_MAX];
 
    public:
 	Character( void );
@@ -16,7 +17,7 @@ class Character : public ICharacter {
 	Character& operator=( const Character& ref );
 	virtual ~Character( void );
 
-	virtual std::string const& getName();
+	virtual std::string const& getName() const;
 	virtual void equip( AMateria* m );
 	virtual void unequip( int idx );
 	virtual void use( int idx, ICharacter& target );
