@@ -5,7 +5,6 @@
 class Cat : public Animal {
    public:
 	Cat( void );
-	Cat( std::string name );
 	Cat( const Cat& ref );
 	virtual ~Cat( void );
 	Cat& operator=( const Cat& ref );
