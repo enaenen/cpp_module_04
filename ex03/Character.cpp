@@ -1,18 +1,62 @@
 #include "Character.hpp"
+#include "AMateria.hpp"
 
-Character::Character( void ) {}
-Character::Character( std::string name ) {}
-Character::Character( const Character& ref ) {}
-Character& Character::operator=( const Character& ref ) {}
+Character::Character( void ) : name( "NoName" ) {
+	for ( int i = 0; i < BAG_SLOT_MAX; i++ ) {
+		this->materia[i] = NULL;
+	}
+}
 
-std::string const& Character::getName() { return name; }
-void Character::equip( AMateria* m ) {}
-void Character::unequip( int idx ) {}
+Character::Character( std::string name ) : name( name ) {
+	for ( int i = 0; i < BAG_SLOT_MAX; i++ ) {
+		this->materia[i] = NULL;
+	}
+}
+
+Character::Character( const Character& ref ) : name( ref.name ) {
+	for ( int i = 0; i < BAG_SLOT_MAX; i++ ) {
+		if ( ref.materia[i] )
+			this->materia[i] = ref.materia[i]->clone();
+		else
+			this->materia[i] = NULL;
+	}
+}
+
+Character& Character::operator=( const Character& ref ) {
+	if ( this != &ref ) {
+		for ( int i = 0; i < BAG_SLOT_MAX; i++ ) {
+			if ( materia[i] )
+				delete materia[i];
+			if ( ref.materia[i] )
+				materia[i] = ref.materia[i]->clone();
+		}
+	}
+	return *this;
+}
+Character::~Character( void ) {
+	for ( int i = 0; i < BAG_SLOT_MAX; i++ )
+		if ( materia[i] )
+			delete materia[i];
+}
+std::string const& Character::getName() const { return name; }
+
+void Character::equip( AMateria* get ) {
+	for ( int i = 0; i < BAG_SLOT_MAX; i++ ) {
+		if ( !this->materia[i] ) {
+			this->materia[i] = get;
+			return;
+		}
+	}
+}
+void Character::unequip( int idx ) {
+	if ( idx < 0 || BAG_SLOT_MAX <= idx )
+		return;
+	this->materia[idx] = NULL;
+}
 void Character::use( int idx, ICharacter& target ) {
-	if ( this->materia[idx].getType().compare( "Ice" ) )
-		std::cout << "* shoots an ice bolt at" << target.getName() << " *"
-				  << std::endl;
-	else if ( this->materia[idx].getType().compare( "Cure" ) )
-		std::cout << "* heals " << target.getName() << "’s wounds *"
-				  << std::endl;
+	if ( idx < 0 || BAG_SLOT_MAX <= idx )
+		return;
+
+	if ( materia[idx] )
+		materia[idx]->use( target );
 }
