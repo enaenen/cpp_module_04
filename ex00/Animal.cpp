@@ -1,6 +1,7 @@
 #include "Animal.hpp"
 
 Animal::Animal( void ) {
+	type = "NONE";
 	std::cout << "Animal [ Defalut ] Constructor Called " << std::endl;
 }
 
@@ -24,8 +25,12 @@ Animal& Animal::operator=( const Animal& ref ) {
 	return ( *this );
 }
 
-std::string Animal::getType( void ) const { return type; }
-void Animal::setType( std::string type ) { this->type = type; }
+std::string Animal::getType( void ) const {
+	return type;
+}
+void Animal::setType( std::string type ) {
+	this->type = type;
+}
 void Animal::makeSound( void ) const {
 	std::cout << "****** THIS IS ANIMAL SO SOUND WILL BE OVERWRITED *******"
 			  << std::endl;

@@ -1,6 +1,7 @@
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal( void ) {
+	type = "NONE";
 	std::cout << "WrongAnimal [ Defalut ] Constructor Called " << std::endl;
 }
 
@@ -24,8 +25,12 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal& ref ) {
 	return ( *this );
 }
 
-std::string WrongAnimal::getType( void ) const { return type; }
-void WrongAnimal::setType( std::string type ) { this->type = type; }
+std::string WrongAnimal::getType( void ) const {
+	return type;
+}
+void WrongAnimal::setType( std::string type ) {
+	this->type = type;
+}
 void WrongAnimal::makeSound( void ) const {
 	std::cout
 		<< "****** THIS IS WrongAnimal SO SOUND WILL BE OVERWRITED *******"
