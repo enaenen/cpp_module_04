@@ -5,7 +5,7 @@ Dog::Dog( void ) : Animal( "Dog" ) {
 	brain = new Brain();
 }
 
-Dog::Dog( const Dog& ref ) {
+Dog::Dog( const Dog& ref ) : Animal( "Dog" ) {
 	std::cout << "Dog [ Copy Constructor ] Called " << std::endl;
 	brain = new Brain();
 	*brain = *ref.brain;

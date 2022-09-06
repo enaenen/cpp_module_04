@@ -4,7 +4,7 @@ WrongCat::WrongCat( void ) : WrongAnimal( "WrongCat" ) {
 	std::cout << "WrongCat [ Defalut ] Constructor Called " << std::endl;
 }
 
-WrongCat::WrongCat( const WrongCat& ref ) {
+WrongCat::WrongCat( const WrongCat& ref ) : WrongAnimal( "WrongCat" ) {
 	std::cout << "WrongCat [ Copy ] Constructor Called " << std::endl;
 	*this = ref;
 }

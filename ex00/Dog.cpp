@@ -4,7 +4,7 @@ Dog::Dog( void ) : Animal( "Dog" ) {
 	std::cout << "Dog [ Defalut ] Constructor Called " << std::endl;
 }
 
-Dog::Dog( const Dog& ref ) {
+Dog::Dog( const Dog& ref ) : Animal( "Dog" ) {
 	std::cout << "Dog [ Copy ] Constructor Called " << std::endl;
 	*this = ref;
 }
